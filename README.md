@@ -8,10 +8,19 @@ dispersion that go with it.
 ## How it works
 
 Everything revolves around one **system object** (for example a
-dual-deploy drogue + main system). It holds the known and unknown
-values, sizes the canopy and shroud lines when it is created, and is
-then passed to every analysis, render and export as the single source of
-truth.
+dual-deploy drogue + main system). It is the canonical data store: it
+holds the knowns and unknowns, and it is passed to every analysis,
+render and export so they all read the same data.
+
+**Inputs.** Three knowns must be given:
+
+- target apogee
+- altitude of main deployment
+- target descent rate (velocity)
+
+**Computed values.** The unknowns the simulation needs (canopy and
+shroud line dimensions, for example) are not entered by hand. They are
+computed from the knowns when the system is created.
 
 ```
 interface  ->  systems  ->  geometries
@@ -64,4 +73,5 @@ Code is under `src/yasradPDS/`.
 `main.py` is the entry point that starts the interface.
 
 ## Credits/Sources
-- RocketPy Library: https://rocketpy-team.github.io/
+
+- [RocketPy Library](https://rocketpy-team.github.io/)
